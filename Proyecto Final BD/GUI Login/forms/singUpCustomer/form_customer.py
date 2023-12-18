@@ -7,12 +7,13 @@ import psycopg2
 
 
 
-
+# La clase FormCustomer hereda de FormRegisterDesigner.
 class FormCustomer(FormRegisterDesigner):
+    # El método __init__ llama al constructor de la clase padre.
     def __init__(self):
         super().__init__()
 
-
+# El método obtener_coordenadas toma una dirección como entrada y devuelve las coordenadas de esa dirección
     def obtener_coordenadas(self, direccion):
         geolocalizador = Nominatim(user_agent="mi_aplicacion")
         ubicacion = geolocalizador.geocode(direccion)
@@ -23,7 +24,7 @@ class FormCustomer(FormRegisterDesigner):
         else:
             return None, None
 
-
+# El método register recopila los datos del cliente de varias entradas, verifica si los datos son válidos y luego intenta insertar los datos en la base de datos.
     def register(self):
         datos_cliente = []
         datos_cliente.append(self.entryCelular.get())
@@ -49,7 +50,7 @@ class FormCustomer(FormRegisterDesigner):
 
         elif coordenadas == (None, None):
             messagebox.showerror(message="Por favor ingresa una direccion Valida",title="Mensaje") 
-        
+        # Si todos los datos son válidos, intenta insertar los datos en la base de datos.
         else:
             try:
                 conexionDB.insertar(datos_cliente, "CLIENTE")
