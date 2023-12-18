@@ -16,9 +16,12 @@ import math
 class FormPerfilTrabajadorDesigner():
 
     def editar(self):
+        # Este método se encargará de editar el perfil del trabajador.
         pass
 
     def convertir_a_circular(self, imagen, tamano):
+        # Este método toma una imagen y su tamaño como entrada, y devuelve la imagen en un formato circular.
+        # Esto se hace utilizando la biblioteca PIL para manipular la imagen.
         img = Image.open(imagen).convert("RGBA")
         img = img.resize(tamano)
         fondo = Image.new('RGBA', tamano, (0, 0, 0, 0))
@@ -32,7 +35,7 @@ class FormPerfilTrabajadorDesigner():
         img_circular.paste(img, mask=mascara)
         return img_circular
 
-
+    #Este es el constructor de la parte visual
     def __init__(self, nombre_usuario):
         datos_trabajador = (conexionDB.consultar(f"SELECT * FROM TRABAJADOR WHERE id_trabajador = '{nombre_usuario}'"))[0]
         self.ventana = tk.Toplevel()
