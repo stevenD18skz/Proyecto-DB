@@ -28,7 +28,7 @@ CREATE TABLE TRABAJADOR (
     nombre VARCHAR(500) NOT NULL,
     apellido VARCHAR(500) NOT NULL,
     documento VARCHAR(500) NOT NULL,
-	calificacion DOUBLE PRECISION
+    calificacion DOUBLE PRECISION CHECK (calificacion >= 0 AND calificacion <= 5)
 );
 
 -- Crear la secuencia sec_trabajador
