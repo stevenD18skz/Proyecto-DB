@@ -9,7 +9,7 @@ class FormRegisterDesigner():
     def register():
         pass
 
-
+# Define el método upload_image con el parámetro self y destination_dir.
     def upload_image(self, destination_dir):
         filename = filedialog.askopenfilename(initialdir="/", title="Select file",filetypes=(("jpeg files", "*.jpg"), ("all files", "*.*")))
         if filename:
@@ -22,7 +22,7 @@ class FormRegisterDesigner():
 
 
 
-
+#Este es el constructor de la parte visual
     def __init__(self):
         self.ventana = tk.Toplevel()
         self.ventana.title('Registro de cliente')        
