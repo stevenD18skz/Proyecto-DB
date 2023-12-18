@@ -15,23 +15,27 @@ import math
 
 class FormEditarPerfilTrabajadorDesigner():
     def agregar_labor(self, nombre_usuario):
+        # Esta función se encarga de agregar una nueva labor para un trabajador.
         datos_oferta = [nombre_usuario]
         id_servicio = conexionDB.consultar(f"SELECT id_servicio from servicio where nombre = '{self.seleccionar_labores.get().capitalize()}'")
         datos_oferta.append(id_servicio[0][0])
         datos_oferta.append(self.entry_precio.get())
         cant = conexionDB.consultar(f"select count(id_servicio) from oferta where id_trabajador = '{nombre_usuario}' and id_servicio = {id_servicio[0][0]}")
 
+        # Aquí se verifica si la labor ya existe para el trabajador.
         if cant[0][0] == 0:
+            # Si la labor no existe, se inserta en la base de datos.
             conexionDB.insertar(datos_oferta, "OFERTA")
             messagebox.showinfo(message=f"Tu nueva labor se inserto con exito",title="Mensaje")
             self.ventana.destroy()
 
         else:
+            # Si la labor ya existe, se actualiza el precio en la base de datos.
             conexionDB.update("OFERTA", "precio", self.entry_precio.get(), "id_servicio", id_servicio[0][0])
             messagebox.showinfo(message=f"el precio por tu labor se actualizo con extio",title="Mensaje")
             self.ventana.destroy()
 
-
+    #Este es el constructor de la parte visual
     def __init__(self, nombre_usuario):
         self.ventana = tk.Toplevel()
         self.ventana.title('Perfil Usuario')        
