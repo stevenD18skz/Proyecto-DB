@@ -8,16 +8,19 @@ import os
 class FormLoginDesigner():
 
     def verificar(self):
+        # Este método se encargará de verificar los datos de inicio de sesión del usuario.
         pass
     
     def userRegister(self):
+        # Este método se encargará de registrar a un nuevo usuario.
         pass
 
     def workerRegister(self):
+        # Este método se encargará de registrar a un nuevo trabajador.
         pass
 
     
-
+    #Este es el constructor de la parte visual
     def __init__(self):
         
         self.ventana = tk.Tk()
