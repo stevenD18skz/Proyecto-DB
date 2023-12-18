@@ -232,23 +232,6 @@ def __init__(self, parent, id_cliente):
 
 
 
-
-        
-
-
-        
-
-
-
-
-
-
-
-        
-
-
-
-
         # ========================================> PANEL MEDIO <====================================
     # Crea un nuevo marco (Frame) en el marco self.frame con un tamaño específico, un color de primer plano y un radio de esquina.
     frame_logo = CTkFrame(self.frame, width=750, height=460, fg_color="#DBE6FC", corner_radius=32)
