@@ -13,6 +13,7 @@ class FormRegisterWorkerDesigner():
     esta contiene todos los widgets necesario para la interfaz
     """
     def register():
+        # Este método se encargará de registrar a un nuevo trabajador.
         pass
 
     """
@@ -21,16 +22,19 @@ class FormRegisterWorkerDesigner():
     def upload_image(self, destination_dir):
         filename = filedialog.askopenfilename(initialdir="/", title="Select file",filetypes=(("jpeg files", "*.jpg"), ("all files", "*.*")))
         if filename:
+            # Si se selecciona un archivo, se copia al directorio de destino.
             destination = os.path.join(destination_dir, os.path.basename(filename)).replace('\\', '/')
             shutil.copyfile(filename, destination)
 
             if "perfil" in destination_dir:
+                 # Si el directorio de destino es para imágenes de perfil, se carga la imagen y se muestra en la interfaz.
                 self.direccionPerfil = destination
                 self.foto = utl.leer_imagen(destination, (220, 200))
                 ola2 = tk.Label(self.frame_logo, image=self.foto, bg='#F87474', bd=0)
                 ola2.place(x=61, y=65)
 
             else:
+                # Si el directorio de destino es para otros documentos, se carga la imagen y se muestra en la interfaz.
                 self.direccionDocumento = destination
                 self.doc = utl.leer_imagen(destination, (200, 150))
                 ola2 = tk.Label(self.frame_logo, image=self.doc, bg='#F87474', bd=0)
